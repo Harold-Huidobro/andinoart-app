@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Andinoart_app.ViewModels
+﻿namespace Andinoart_app.ViewModels
 {
     public class MainViewModel
     {
@@ -12,12 +8,33 @@ namespace Andinoart_app.ViewModels
             get;
             set;
         }
+
+        public AndinoArtViewModel AndinoArt
+        {
+            get;
+            set;
+        }
         #endregion
 
         #region Constructors
         public MainViewModel()
         {
+            instance = this;
             this.Login = new LoginViewModel();
+        }
+        #endregion
+
+        #region Singleton
+        private static MainViewModel instance;
+
+        public static MainViewModel GetInstance()
+        {
+            if (instance==null)
+            {
+                return new MainViewModel();
+            }
+
+            return instance;
         }
         #endregion
     }

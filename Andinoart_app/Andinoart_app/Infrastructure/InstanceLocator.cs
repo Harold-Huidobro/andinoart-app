@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Andinoart_app.Infrastructure
+﻿namespace Andinoart_app.Infrastructure
 {
     using ViewModels;
     class InstanceLocator

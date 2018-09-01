@@ -1,13 +1,15 @@
-﻿using GalaSoft.MvvmLight.Command;
+﻿
+using GalaSoft.MvvmLight.Command;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Andinoart_app.ViewModels
 {
+    using Views;
     public class LoginViewModel : BaseViewModel
     {
         #region Attributes
-        //private string email;
+        private string email;
         private string password;
         private bool isRunning;
         private bool isEnabled;
@@ -16,8 +18,8 @@ namespace Andinoart_app.ViewModels
         #region Properties
         public string Email
         {
-            get;
-            set;
+            get { return email; }
+            set { SetValue(ref email, value); }
         }
         public string Password
         {            
@@ -48,7 +50,10 @@ namespace Andinoart_app.ViewModels
         public LoginViewModel()
         {
             this.IsRemembered = true;
-            this.isEnabled = true;
+            this.IsEnabled = true;
+
+            this.Email = "harold.huidobro@gmail.com";
+            this.Password = "1234";
         }
         #endregion
         #region Commands
@@ -98,11 +103,11 @@ namespace Andinoart_app.ViewModels
             this.IsRunning = false;
             this.IsEnabled = true;
 
-            await Application.Current.MainPage.DisplayAlert(
-                    "Ok",
-                    "Fuck Yeah!!!.",
-                    "Accept");
-            return;
+            this.Email = string.Empty;
+            this.Password = string.Empty;
+
+            MainViewModel.GetInstance().AndinoArt = new AndinoArtViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new AndinoArtPage());
 
         }
         #endregion
