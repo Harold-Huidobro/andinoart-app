@@ -1,4 +1,4 @@
-﻿namespace Andinoart_app.Models
+﻿namespace Andinoart_app.Common.Models
 {
     using System;
     using Newtonsoft.Json;

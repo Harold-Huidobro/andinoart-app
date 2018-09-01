@@ -9,7 +9,7 @@
             set;
         }
 
-        public AndinoArtViewModel AndinoArt
+        public ArtisanViewModel Artisans
         {
             get;
             set;

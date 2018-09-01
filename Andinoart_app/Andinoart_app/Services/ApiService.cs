@@ -6,7 +6,7 @@
     using System.Net.Http.Headers;
     using System.Text;
     using System.Threading.Tasks;
-    using Models;
+    using Common.Models;
     using Newtonsoft.Json;
     using Plugin.Connectivity;
 
@@ -124,7 +124,8 @@
             {
                 var client = new HttpClient();
                 client.BaseAddress = new Uri(urlBase);
-                var url = string.Format("{0}{1}", servicePrefix, controller);
+                //var url = string.Format("{0}{1}", servicePrefix, controller);
+                var url = $"{servicePrefix}{controller}";
                 var response = await client.GetAsync(url);
                 var result = await response.Content.ReadAsStringAsync();
 

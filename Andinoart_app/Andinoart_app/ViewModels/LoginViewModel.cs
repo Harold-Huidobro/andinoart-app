@@ -56,6 +56,7 @@ namespace Andinoart_app.ViewModels
             this.Password = "1234";
         }
         #endregion
+
         #region Commands
         public ICommand LoginCommand
         {
@@ -106,8 +107,8 @@ namespace Andinoart_app.ViewModels
             this.Email = string.Empty;
             this.Password = string.Empty;
 
-            MainViewModel.GetInstance().AndinoArt = new AndinoArtViewModel();
-            await Application.Current.MainPage.Navigation.PushAsync(new AndinoArtPage());
+            MainViewModel.GetInstance().Artisans = new ArtisanViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new ArtisansPage());
 
         }
         #endregion
