@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Andinoart_app.Domain.Models 
+﻿
+namespace Andinoart_app.Domain.Models
 {
+    using System.Data.Entity;
+    using Common.Models;
+
     public class DataContext : DbContext
     {
         public DataContext() : base("DefaultConnection")
@@ -14,6 +11,8 @@ namespace Andinoart_app.Domain.Models
 
         }
 
-        public System.Data.Entity.DbSet<Andinoart_app.Common.Models.Artisan> Artisans { get; set; }
+        public DbSet<Artisan> Artisans { get; set; }
+        public DbSet<Product> Products { get; set; }
+
     }
 }
