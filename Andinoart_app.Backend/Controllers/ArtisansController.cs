@@ -48,7 +48,7 @@ namespace Andinoart_app.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ArtisanId,DNI,FirstName,LastName,SecondLastName,Cellphone,Address,History,IsActive,CreatedOn")] Artisan artisan)
+        public async Task<ActionResult> Create([Bind(Include = "ArtisanId,DNI,FirstName,LastName,SecondLastName,ArtesanalLine,Cellphone,Email,Address,History,IsActive,CreatedOn")] Artisan artisan)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace Andinoart_app.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ArtisanId,DNI,FirstName,LastName,SecondLastName,Cellphone,Address,History,IsActive,CreatedOn")] Artisan artisan)
+        public async Task<ActionResult> Edit([Bind(Include = "ArtisanId,DNI,FirstName,LastName,SecondLastName,ArtesanalLine,Cellphone,Email,Address,History,IsActive,CreatedOn")] Artisan artisan)
         {
             if (ModelState.IsValid)
             {

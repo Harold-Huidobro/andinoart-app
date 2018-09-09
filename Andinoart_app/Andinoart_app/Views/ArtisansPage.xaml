@@ -22,33 +22,51 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="2*"/>
-                                </Grid.ColumnDefinitions>
-                                <Label
+                            <Frame
+                                CornerRadius="20"
+                                HasShadow="True"
+                                Margin="5">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectArtisanCommand}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition Width=".5*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label
                                     Grid.Column="0"
                                     Text="{Binding DNI}">
-                                </Label>
-                                <Label
+                                    </Label>
+                                    <Label
                                     FontAttributes="Bold"                                    
                                     Grid.Column="1">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding FirstName}"/>
-                                            <Span Text=" "/>
-                                            <Span Text="{Binding LastName}"/>
-                                            <Span Text=" "/>
-                                            <Span Text="{Binding SecondLastName}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                            </Grid>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding FirstName}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding LastName}"/>
+                                                <Span Text=" "/>
+                                                <Span Text="{Binding SecondLastName}"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Image
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    Source="ic_chevron_right">
+                                    </Image>
+                                </Grid>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <!--<Button
+                Text="products"
+                Command="{Binding SelectArtisanCommand}">
+            </Button>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

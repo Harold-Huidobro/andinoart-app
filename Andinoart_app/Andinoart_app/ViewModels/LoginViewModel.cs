@@ -107,7 +107,7 @@ namespace Andinoart_app.ViewModels
             this.Email = string.Empty;
             this.Password = string.Empty;
 
-            MainViewModel.GetInstance().Artisans = new ArtisanViewModel();
+            MainViewModel.GetInstance().Artisans = new ArtisansViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new ArtisansPage());
 
         }

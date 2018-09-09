@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Andinoart_app.Views.ArtisanPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Artisans">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding Artisan}">
+            <StackLayout
+                Padding="5">
+                <Label
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    TextColor="Black">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Artisan.FirstName}"/>
+                            <Span Text=" "/>
+                            <Span Text="{Binding Artisan.LastName}"/>
+                            <Span Text=" "/>
+                            <Span Text="{Binding Artisan.SecondLastName}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Cellphone: "
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding Artisan.Cellphone}"
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        Text="Address: "
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        FontAttributes="Bold"
+                        Text="{Binding Artisan.Address}"
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="History: "
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Text="{Binding Artisan.History}"
+                        TextColor="Black">
+                    </Label>                    
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        FontAttributes="Bold"
+                        Text="IsActive: "
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        FontAttributes="Bold"
+                        Text="{Binding Artisan.IsActive}"
+                        TextColor="Black">
+                    </Label>                
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

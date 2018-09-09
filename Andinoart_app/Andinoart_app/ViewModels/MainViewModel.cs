@@ -9,7 +9,19 @@
             set;
         }
 
-        public ArtisanViewModel Artisans
+        public ArtisansViewModel Artisans
+        {
+            get;
+            set;
+        }
+
+        public ProductsViewModel Products
+        {
+            get;
+            set;
+        }
+
+        public ArtisanViewModel Artisan
         {
             get;
             set;
