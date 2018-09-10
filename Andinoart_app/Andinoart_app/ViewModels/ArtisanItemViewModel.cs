@@ -23,7 +23,7 @@
         private async void SelectArtisan()
         {
             MainViewModel.GetInstance().Artisan = new ArtisanViewModel(this);
-            await Application.Current.MainPage.Navigation.PushAsync(new ArtisanPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new ArtisanTabbedPage());
         } 
         #endregion
     }

@@ -93,6 +93,8 @@
                 FirstName = a.FirstName,
                 LastName = a.LastName,
                 SecondLastName = a.SecondLastName,
+                ArtesanalLine = a.ArtesanalLine,
+                Email = a.Email,
                 Cellphone = a.Cellphone,
                 Address = a.Address,
                 History = a.History,

@@ -5,7 +5,13 @@
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Products">
     <ContentPage.Content>
-        <StackLayout
+        <Label
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            Text="Products"
+            TextColor="Black">
+        </Label>
+        <!--<StackLayout
             BindingContext="{Binding Products}"
             Padding="5">
             <ListView
@@ -35,6 +41,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>

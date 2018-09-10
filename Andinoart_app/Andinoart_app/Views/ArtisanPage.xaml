@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Andinoart_app.Views.ArtisanPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
-             Title="Artisans">
+             Title="Information">
     <ContentPage.Content>
         <ScrollView
             BindingContext="{Binding Artisan}">
@@ -32,55 +32,81 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="Cellphone: "
+                        FontAttributes="Bold"
+                        Text="Artesanal Line: "
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="1"
                         Grid.Row="0"
-                        Text="{Binding Artisan.Cellphone}"
+                        Text="{Binding Artisan.ArtesanalLine}"
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
+                        FontAttributes="Bold"
+                        Text="Cellphone: "
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="{Binding Artisan.Cellphone}"
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
                         FontAttributes="Bold"
                         Text="Address: "
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="1"
-                        Grid.Row="1"
-                        FontAttributes="Bold"
+                        Grid.Row="2"
                         Text="{Binding Artisan.Address}"
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="0"
-                        Grid.Row="2"
+                        Grid.Row="3"
+                        FontAttributes="Bold"
                         Text="History: "
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="1"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Text="{Binding Artisan.History}"
                         TextColor="Black">
                     </Label>                    
                     <Label
                         Grid.Column="0"
-                        Grid.Row="3"
+                        Grid.Row="4"
                         FontAttributes="Bold"
                         Text="IsActive: "
                         TextColor="Black">
                     </Label>
                     <Label
                         Grid.Column="1"
-                        Grid.Row="3"
-                        FontAttributes="Bold"
+                        Grid.Row="4"
                         Text="{Binding Artisan.IsActive}"
                         TextColor="Black">
-                    </Label>                
+                    </Label>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        FontAttributes="Bold"
+                        Text="Created On: "
+                        TextColor="Black">
+                    </Label>
+                    <Label
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Text="{Binding Artisan.CreatedOn}"
+                        TextColor="Black">
+                    </Label>
                 </Grid>
             </StackLayout>
         </ScrollView>

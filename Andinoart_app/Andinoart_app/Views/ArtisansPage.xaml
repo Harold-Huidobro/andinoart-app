@@ -9,9 +9,10 @@
             BindingContext="{Binding Artisans}"
             Padding="5">
             <SearchBar
+                HeightRequest="30"
                 Placeholder="Search..."
-                Text="{Binding Filter,Mode=TwoWay}"
                 SearchCommand="{Binding SearchCommand}">
+                Text="{Binding Filter,Mode=TwoWay}"
             </SearchBar>
             <ListView
                 HasUnevenRows="True"
@@ -22,14 +23,17 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame
+                            <!--<Frame
                                 CornerRadius="20"
                                 HasShadow="True"
                                 Margin="5">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectArtisanCommand}"/>
-                                </Frame.GestureRecognizers>
+                                </Frame.GestureRecognizers>-->
                                 <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding SelectArtisanCommand}"/>
+                                </Grid.GestureRecognizers>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="*"/>
                                         <ColumnDefinition Width="2*"/>
@@ -58,7 +62,7 @@
                                     Source="ic_chevron_right">
                                     </Image>
                                 </Grid>
-                            </Frame>
+                            <!--</Frame>-->
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
