@@ -48,7 +48,7 @@ namespace Andinoart_app.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductID,SKU,ProductName,Description,IsAvailable,Price,PublishOn")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "ProductID,SKU,ProductName,Description,SalePrice,Length,Width,Height,Weight,Color,Quality,Material,Observation,PublishOn,IsAvailable")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace Andinoart_app.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,SKU,ProductName,Description,IsAvailable,Price,PublishOn")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductID,SKU,ProductName,Description,SalePrice,Length,Width,Height,Weight,Color,Quality,Material,Observation,PublishOn,IsAvailable")] Product product)
         {
             if (ModelState.IsValid)
             {
