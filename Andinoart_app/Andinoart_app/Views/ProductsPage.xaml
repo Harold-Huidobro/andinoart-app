@@ -4,6 +4,9 @@
              x:Class="Andinoart_app.Views.ProductsPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Products">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_add_circle"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <Label
             FontAttributes="Bold"

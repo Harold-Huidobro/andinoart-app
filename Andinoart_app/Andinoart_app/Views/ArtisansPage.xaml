@@ -4,15 +4,19 @@
              x:Class="Andinoart_app.Views.ArtisansPage"
              BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Artisans">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_add_circle" Command="{Binding AddArtisanCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Artisans}"
             Padding="5">
             <SearchBar
-                HeightRequest="30"
+                HeightRequest="40"
                 Placeholder="Search..."
-                SearchCommand="{Binding SearchCommand}">
+                SearchCommand="{Binding SearchCommand}"
                 Text="{Binding Filter,Mode=TwoWay}"
+                IsEnabled="{Binding IsEnabled, Mode=TwoWay}">
             </SearchBar>
             <ListView
                 HasUnevenRows="True"
@@ -30,38 +34,38 @@
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectArtisanCommand}"/>
                                 </Frame.GestureRecognizers>-->
-                                <Grid>
+                            <Grid>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding SelectArtisanCommand}"/>
                                 </Grid.GestureRecognizers>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="2*"/>
-                                        <ColumnDefinition Width=".5*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width=".5*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label
                                     Grid.Column="0"
                                     Text="{Binding DNI}">
-                                    </Label>
-                                    <Label
+                                </Label>
+                                <Label
                                     FontAttributes="Bold"                                    
                                     Grid.Column="1">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding FirstName}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding LastName}"/>
-                                                <Span Text=" "/>
-                                                <Span Text="{Binding SecondLastName}"/>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Image
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding LastName}"/>
+                                            <Span Text=" "/>
+                                            <Span Text="{Binding SecondLastName}"/>
+                                            <Span Text=", "/>
+                                            <Span Text="{Binding FirstName}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Image
                                     Grid.Column="2"
                                     HorizontalOptions="End"
                                     Source="ic_chevron_right">
-                                    </Image>
-                                </Grid>
+                                </Image>
+                            </Grid>
                             <!--</Frame>-->
                         </ViewCell>
                     </DataTemplate>

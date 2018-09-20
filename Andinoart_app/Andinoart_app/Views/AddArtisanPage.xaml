@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Andinoart_app.Views.AddArtisanPage"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Add Artisan">
+    <ContentPage.Content>
+        <ScrollView
+            BindingContext="{Binding AddArtisan}">
+            <StackLayout
+                Padding="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label                        
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="DNI*"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Keyboard="Numeric"
+                        Placeholder="DNI..."
+                        Text="{Binding Dni}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Text="FirstName*"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Placeholder="FirstName..."
+                        Text="{Binding FirstName}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Text="LastName*"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Placeholder="LastName..."
+                        Text="{Binding LastName}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Text="SecondLastName*"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        Placeholder="SecondLastName..."
+                        Text="{Binding SecondLastName}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="4"
+                        Text="ArtesanalLine*"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Placeholder="ArtesanalLine..."
+                        Text="{Binding ArtesanalLine}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="5"
+                        Text="Cellphone"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Keyboard="Numeric"
+                        Placeholder="Cellphone..."
+                        Text="{Binding Cellphone}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="6"
+                        Text="Email"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="6"
+                        Keyboard="Email"
+                        Placeholder="Email..."
+                        Text="{Binding Email}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="7"
+                        Text="Address*"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Column="1"
+                        Grid.Row="7"
+                        Placeholder="Address..."
+                        Text="{Binding Address}">
+                    </Entry>
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="8"
+                        Text="History"
+                        VerticalOptions="Center">
+                    </Label>
+                    <Editor
+                        Grid.Column="1"
+                        Grid.Row="8"
+                        VerticalOptions="FillAndExpand"
+                        Text="{Binding History}">
+                    </Editor>
+                </Grid>
+                <ActivityIndicator
+                    IsRunning="{Binding IsRunning,Mode=TwoWay}"
+                    VerticalOptions="CenterAndExpand">
+                </ActivityIndicator>
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"
+                    Command="{Binding SaveCommand}"
+                    HeightRequest="46"
+                    IsEnabled="{Binding IsEnabled, Mode=TwoWay}"
+                    Text="Save"
+                    TextColor="White"
+                    VerticalOptions="End">
+                </Button>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

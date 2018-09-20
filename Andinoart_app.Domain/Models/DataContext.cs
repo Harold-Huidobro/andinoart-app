@@ -6,13 +6,14 @@ namespace Andinoart_app.Domain.Models
 
     public class DataContext : DbContext
     {
+
+        public DbSet<Artisan> Artisans { get; set; }
+        public DbSet<Product> Products { get; set; }
+
         public DataContext() : base("DefaultConnection")
         {
 
         }
-
-        public DbSet<Artisan> Artisans { get; set; }
-        public DbSet<Product> Products { get; set; }
 
     }
 }

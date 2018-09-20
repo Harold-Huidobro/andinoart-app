@@ -1,5 +1,10 @@
 ﻿namespace Andinoart_app.ViewModels
 {
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
+    using Views;
+    using Xamarin.Forms;
+
     public class MainViewModel
     {
         #region ViewModels
@@ -22,6 +27,12 @@
         }
 
         public ArtisanViewModel Artisan
+        {
+            get;
+            set;
+        }
+
+        public AddArtisanViewModel AddArtisan
         {
             get;
             set;
@@ -49,5 +60,20 @@
             return instance;
         }
         #endregion
+
+        public ICommand AddArtisanCommand
+        {
+            get
+            {
+                return new RelayCommand(GoToAddArtisan);
+            }
+            
+        }
+
+        private async void GoToAddArtisan()
+        {
+            this.AddArtisan = new AddArtisanViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new AddArtisanPage());
+        }
     }
 }

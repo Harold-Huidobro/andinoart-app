@@ -91,8 +91,8 @@ namespace Andinoart_app.ViewModels
 
             if (this.Email!="harold.huidobro@gmail.com" || this.Password!="1234")
             {
-                this.IsRunning = false;
-                this.IsEnabled = true;
+                this.IsRunning = true;
+                this.IsEnabled = false;
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "Email or password incorrect.",
@@ -101,15 +101,13 @@ namespace Andinoart_app.ViewModels
                 return;
             }
 
-            this.IsRunning = false;
-            this.IsEnabled = true;
-
             this.Email = string.Empty;
             this.Password = string.Empty;
 
             MainViewModel.GetInstance().Artisans = new ArtisansViewModel();
             await Application.Current.MainPage.Navigation.PushAsync(new ArtisansPage());
-
+            this.IsRunning = false;
+            this.IsEnabled = true;
         }
         #endregion
     }

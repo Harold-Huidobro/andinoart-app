@@ -20,6 +20,7 @@
         #region Attributes
         private ObservableCollection<ArtisanItemViewModel> artisans;
         private bool isRefreshing;
+        private bool isEnabled;
         private string filter;
         private List<Artisan> artisansList;
         #endregion
@@ -46,6 +47,12 @@
                 this.Search();
             }
         }
+
+        public bool IsEnabled
+        {
+            get { return isEnabled; }
+            set { SetValue(ref isEnabled, value); }
+        }
         #endregion
 
         #region Constructors
@@ -61,17 +68,21 @@
         private async void LoadArtisans()
         {
             this.IsRefreshing = true;
-            var connection = await this.apiService.CheckConnection();
+            this.IsEnabled = false;
 
+            var connection = await this.apiService.CheckConnection();
             if(!connection.IsSuccess)
             {
                 this.IsRefreshing = false;
                 await Application.Current.MainPage.DisplayAlert("Error", connection.Message, "Accept");
-                await Application.Current.MainPage.Navigation.PopAsync();
+                //await Application.Current.MainPage.Navigation.PopAsync();
                 return;
             }
 
-            var response = await this.apiService.GetList<Artisan>("https://andinoartappapi.azurewebsites.net", "/api", "/Artisans");
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlArtisansController"].ToString();
+            var response = await this.apiService.GetList<Artisan>(url,prefix,controller);
             if (!response.IsSuccess)
             {
                 this.IsRefreshing = false;
@@ -82,6 +93,7 @@
             this.artisansList = (List<Artisan>)response.Result;
             this.Artisans = new ObservableCollection<ArtisanItemViewModel>(this.ToArtisanItemViewModel());
             this.IsRefreshing = false;
+            this.IsEnabled = true;
 
         }
 

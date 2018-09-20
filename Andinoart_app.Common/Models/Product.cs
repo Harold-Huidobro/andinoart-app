@@ -1,6 +1,7 @@
 ﻿
 namespace Andinoart_app.Common.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.ComponentModel.DataAnnotations;
 
@@ -68,6 +69,10 @@ namespace Andinoart_app.Common.Models
         [Display(Name = "Disponible")]
         public bool IsAvailable { get; set; }
 
+        public int? ArtisanId { get; set; }
+
+        [JsonIgnore]
+        public virtual Artisan Artisan { get; set; }
     }
 
 }

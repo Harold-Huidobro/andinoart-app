@@ -1,6 +1,8 @@
 ﻿namespace Andinoart_app.Common.Models
 {
+    using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public class Artisan
@@ -44,6 +46,9 @@
         [DataType(DataType.Date)]
         [Display(Name = "Created On")]
         public DateTime CreatedOn { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<Product> Products { get; set; }
 
     }
 }

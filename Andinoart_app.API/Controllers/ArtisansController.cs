@@ -76,6 +76,9 @@ namespace Andinoart_app.API.Controllers
         [ResponseType(typeof(Artisan))]
         public async Task<IHttpActionResult> PostArtisan(Artisan artisan)
         {
+            artisan.IsActive = true;
+            artisan.CreatedOn = DateTime.Now.ToUniversalTime();
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
