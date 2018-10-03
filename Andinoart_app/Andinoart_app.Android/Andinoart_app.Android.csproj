@@ -90,7 +90,9 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\noproduct.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Andinoart_app\Andinoart_app.csproj">
       <Project>{B6EFFC70-2A82-4004-B370-A75D3D548105}</Project>

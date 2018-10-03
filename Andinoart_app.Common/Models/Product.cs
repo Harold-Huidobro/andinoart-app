@@ -17,20 +17,23 @@ namespace Andinoart_app.Common.Models
         public string ProductName { get; set; }
 
         [Required]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
-        /*[Required]
+        [Required]
         [Display(Name = "Precio Compra")]
-        public decimal PurchasePrice { get; set; }*/
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
+        public decimal PurchasePrice { get; set; }
 
         [Required]
         [Display(Name = "Precio Venta")]
+        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         public decimal SalePrice { get; set; }
 
         [Display(Name = "Longitud")]
         public decimal Length { get; set; }
 
-        [Display(Name = "Anchura")]
+        [Display(Name = "Ancho")]
         public decimal Width { get; set; }
 
         [Display(Name = "Altura")]
@@ -57,17 +60,28 @@ namespace Andinoart_app.Common.Models
         [DataType(DataType.MultilineText)]
         public string Observation { get; set; }
 
-        /*[Required]
-        public byte[] Image { get; set; }*/
+        [Display(Name = "Imagen")]
+        public string ImagePath { get; set; }
+
+        public string ImageFullPath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.ImagePath))
+                {
+                    return "noproduct";
+                }
+                return $"https://andinoartappapi.azurewebsites.net/{this.ImagePath.Substring(1)}";
+            }
+        }
 
         [Required]
-        [DataType(DataType.Date)]
         [Display(Name = "Publicado en")]
+        [DataType(DataType.Date)]
         public DateTime PublishOn { get; set; }
 
         [Display(Name = "Disponible")]
         public bool IsAvailable { get; set; }
 
     }
-
 }

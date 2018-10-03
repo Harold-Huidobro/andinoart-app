@@ -9,7 +9,7 @@ namespace Andinoart_app.ViewModels
     using Services;
     using Xamarin.Forms;
 
-    public class ProductsViewModel :BaseViewModel
+    public class ProductsViewModel : BaseViewModel
     {
         #region Services
         private ApiService apiService;
@@ -47,6 +47,7 @@ namespace Andinoart_app.ViewModels
         #region Methods
         public async void LoadProducts()
         {
+            this.IsRefreshing = true;
             var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)

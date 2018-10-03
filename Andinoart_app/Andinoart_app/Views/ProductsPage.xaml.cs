@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace Andinoart_app.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ProductsPage : ContentPage
-	{
-		public ProductsPage ()
-		{
-			InitializeComponent ();
-		}
-	}
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class ProductsPage : ContentPage
+    {
+        public ProductsPage()
+        {
+            InitializeComponent();
+        }
+    }
 }
