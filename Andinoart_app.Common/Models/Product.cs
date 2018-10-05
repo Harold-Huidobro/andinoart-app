@@ -21,10 +21,10 @@ namespace Andinoart_app.Common.Models
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
-        [Required]
-        [Display(Name = "Precio Compra")]
-        [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
-        public decimal PurchasePrice { get; set; }
+        //[Required]
+        //[Display(Name = "Precio Compra")]
+        //[DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
+        //public decimal PurchasePrice { get; set; }
 
         [Required]
         [Display(Name = "Precio Venta")]
@@ -72,7 +72,7 @@ namespace Andinoart_app.Common.Models
                 {
                     return "noproduct";
                 }
-                return $"https://andinoartappapi.azurewebsites.net/{this.ImagePath.Substring(1)}";
+                return $"https://andinoartapi.azurewebsites.net/{this.ImagePath.Substring(1)}";
             }
         }
 

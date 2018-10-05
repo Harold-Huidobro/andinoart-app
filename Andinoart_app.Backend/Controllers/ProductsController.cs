@@ -71,7 +71,7 @@ namespace Andinoart_app.Backend.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", product.ArtisanId);
+            ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", view.ArtisanId);
             //return View(product);
             return View(view);
         }
@@ -84,7 +84,7 @@ namespace Andinoart_app.Backend.Controllers
                 SKU = view.SKU,
                 ProductName = view.ProductName,
                 Description = view.Description,
-                PurchasePrice = view.PurchasePrice,
+                //PurchasePrice = view.PurchasePrice,
                 SalePrice = view.SalePrice,
                 Length = view.Length,
                 Width = view.Width,
@@ -97,7 +97,7 @@ namespace Andinoart_app.Backend.Controllers
                 ImagePath = pic,
                 PublishOn = view.PublishOn,
                 IsAvailable = view.IsAvailable,
-                ArtisanId = view.ArtisanId,
+                ArtisanId = view.ArtisanId,                
             };
         }
 
@@ -127,7 +127,7 @@ namespace Andinoart_app.Backend.Controllers
                 SKU = product.SKU,
                 ProductName = product.ProductName,
                 Description = product.Description,
-                PurchasePrice = product.PurchasePrice,
+                //PurchasePrice = product.PurchasePrice,
                 SalePrice = product.SalePrice,
                 Length = product.Length,
                 Width = product.Width,
@@ -167,7 +167,7 @@ namespace Andinoart_app.Backend.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", product.ArtisanId);
+            ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", view.ArtisanId);
             //return View(product);
             return View(view);
         }
