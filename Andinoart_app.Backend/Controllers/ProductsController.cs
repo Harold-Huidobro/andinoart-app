@@ -19,6 +19,7 @@ namespace Andinoart_app.Backend.Controllers
         // GET: Products
         public async Task<ActionResult> Index()
         {
+            //var products = db.Products.Include(p => p.Artisan);
             return View(await db.Products.ToListAsync());
         }
 
@@ -40,6 +41,7 @@ namespace Andinoart_app.Backend.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
+            ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI");
             return View();
         }
 
@@ -48,7 +50,7 @@ namespace Andinoart_app.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductID,SKU,ProductName,Description,SalePrice,Length,Width,Height,Weight,Color,Quality,Material,Observation,PublishOn,IsAvailable")] Product product)
+        public async Task<ActionResult> Create([Bind(Include = "ProductID,SKU,ProductName,Description,SalePrice,Length,Width,Height,Weight,Color,Quality,Material,Observation,PublishOn,IsAvailable,ArtisanId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +59,7 @@ namespace Andinoart_app.Backend.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", product.ArtisanId);
             return View(product);
         }
 
@@ -72,6 +75,7 @@ namespace Andinoart_app.Backend.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", product.ArtisanId);
             return View(product);
         }
 
@@ -80,7 +84,7 @@ namespace Andinoart_app.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,SKU,ProductName,Description,SalePrice,Length,Width,Height,Weight,Color,Quality,Material,Observation,PublishOn,IsAvailable")] Product product)
+        public async Task<ActionResult> Edit([Bind(Include = "ProductID,SKU,ProductName,Description,SalePrice,Length,Width,Height,Weight,Color,Quality,Material,Observation,PublishOn,IsAvailable,ArtisanId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +92,7 @@ namespace Andinoart_app.Backend.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", product.ArtisanId);
             return View(product);
         }
 

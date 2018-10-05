@@ -1,27 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Andinoart_app.Common.Models;
-using Andinoart_app.Domain.Models;
-
-namespace Andinoart_app.API.Controllers
+﻿namespace Andinoart_app.API.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using API.Models;
+    using Common.Models;
+    using Domain.Models;
+
+
     public class ArtisansController : ApiController
     {
         private DataContext db = new DataContext();
 
         // GET: api/Artisans
-        public IQueryable<Artisan> GetArtisans()
+        public async Task<IHttpActionResult> GetArtisans()
         {
-            return db.Artisans;
+            var responses = new List<ArtisanResponse>();
+            var artisans = await db.Artisans.ToListAsync();
+
+             responses.AddRange(artisans.Select(a => new ArtisanResponse
+            {
+                DNI = a.DNI,
+                FirstName = a.FirstName,
+                LastName = a.LastName,
+                SecondLastName = a.SecondLastName,
+                ArtesanalLine = a.ArtesanalLine,
+                Email = a.Email,
+                Cellphone = a.Cellphone,
+                Address = a.Address,
+                History = a.History,
+                IsActive = a.IsActive,
+                CreatedOn = a.CreatedOn,
+                ArtisanId=a.ArtisanId,
+                Products=a.Products,
+            }));
+            return Ok(responses);
         }
 
         // GET: api/Artisans/5

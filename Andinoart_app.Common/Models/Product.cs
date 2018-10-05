@@ -68,8 +68,8 @@ namespace Andinoart_app.Common.Models
 
         [Display(Name = "Disponible")]
         public bool IsAvailable { get; set; }
-
-        public int? ArtisanId { get; set; }
+       
+        public int ArtisanId { get; set; }
 
         [JsonIgnore]
         public virtual Artisan Artisan { get; set; }
