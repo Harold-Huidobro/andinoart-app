@@ -8,19 +8,13 @@
         <ToolbarItem Icon="ic_add_circle"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <Label
-            FontAttributes="Bold"
-            HorizontalOptions="Center"
-            Text="Products"
-            TextColor="Black">
-        </Label>
-        <!--<StackLayout
+        <StackLayout  
             BindingContext="{Binding Products}"
             Padding="5">
-            <ListView
+            <ListView 
                 HasUnevenRows="True"
+                IsRefreshing="{Binding IsRefreshing}"
                 IsPullToRefreshEnabled="True"
-                IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
                 ItemsSource="{Binding Products}"
                 RefreshCommand="{Binding RefreshCommand}">
                 <ListView.ItemTemplate>
@@ -28,22 +22,33 @@
                         <ViewCell>
                             <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Label
+                                <Image
                                     Grid.Column="0"
-                                    Text="{Binding ProductName}">
-                                </Label>
-                                <Label
+                                    Source="{Binding ImageFullPath}">
+
+                                </Image>
+                                <Label 
+                                    FontAttributes="Bold"
                                     Grid.Column="1"
-                                    Text="{Binding Price}">
+                                    Text="{Binding ProductName}"
+                                    VerticalOptions="Center">
+                                </Label>
+                                <Label                                    
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    Text="{Binding SalePrice, StringFormat='{0:C2}'}"
+                                    VerticalOptions="Center">
                                 </Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </StackLayout>-->
+        </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

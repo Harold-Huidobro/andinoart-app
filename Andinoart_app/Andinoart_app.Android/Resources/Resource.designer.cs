@@ -2989,6 +2989,7 @@ namespace Andinoart_app.Droid
 			
 			// aapt resource value: 0x7f020125
 			public const int navigation_empty_icon = 2130837797;
+			public const int noproduct = 2130837797;
 			
 			// aapt resource value: 0x7f020126
 			public const int notification_action_background = 2130837798;

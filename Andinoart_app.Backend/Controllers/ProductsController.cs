@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Andinoart_app.Backend.Models;
 using Andinoart_app.Common.Models;
+using Andinoart_app.Backend.Helpers;
 
 namespace Andinoart_app.Backend.Controllers
 {
@@ -19,8 +20,7 @@ namespace Andinoart_app.Backend.Controllers
         // GET: Products
         public async Task<ActionResult> Index()
         {
-            //var products = db.Products.Include(p => p.Artisan);
-            return View(await db.Products.ToListAsync());
+            return View(await this.db.Products.OrderBy(p => p.ProductName).ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -30,7 +30,8 @@ namespace Andinoart_app.Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            var product = await db.Products.FindAsync(id);
+
             if (product == null)
             {
                 return HttpNotFound();
@@ -50,17 +51,54 @@ namespace Andinoart_app.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ProductID,SKU,ProductName,Description,SalePrice,Length,Width,Height,Weight,Color,Quality,Material,Observation,PublishOn,IsAvailable,ArtisanId")] Product product)
+        public async Task<ActionResult> Create(ProductView view)
         {
             if (ModelState.IsValid)
             {
+                var pic = string.Empty;
+                var folder = "~/Content/Products";
+
+                if (view.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(view.ImageFile, folder);
+                    pic = $"{folder}/{pic}";
+                }
+
+                var product = this.ToProduct(view, pic);
+
                 db.Products.Add(product);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", product.ArtisanId);
-            return View(product);
+            //return View(product);
+            return View(view);
+        }
+
+        private Product ToProduct(ProductView view, string pic)
+        {
+            return new Product
+            {
+                ProductID = view.ProductID,
+                SKU = view.SKU,
+                ProductName = view.ProductName,
+                Description = view.Description,
+                PurchasePrice = view.PurchasePrice,
+                SalePrice = view.SalePrice,
+                Length = view.Length,
+                Width = view.Width,
+                Height = view.Height,
+                Weight = view.Weight,
+                Color = view.Color,
+                Quality = view.Quality,
+                Material = view.Material,
+                Observation = view.Observation,
+                ImagePath = pic,
+                PublishOn = view.PublishOn,
+                IsAvailable = view.IsAvailable,
+                ArtisanId = view.ArtisanId,
+            };
         }
 
         // GET: Products/Edit/5
@@ -70,13 +108,40 @@ namespace Andinoart_app.Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            var product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
             }
             ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", product.ArtisanId);
-            return View(product);
+            //return View(product);
+            var view = this.ToView(product);
+            return View(view);
+        }
+
+        private ProductView ToView(Product product)
+        {
+            return new ProductView
+            {
+                ProductID = product.ProductID,
+                SKU = product.SKU,
+                ProductName = product.ProductName,
+                Description = product.Description,
+                PurchasePrice = product.PurchasePrice,
+                SalePrice = product.SalePrice,
+                Length = product.Length,
+                Width = product.Width,
+                Height = product.Height,
+                Weight = product.Weight,
+                Color = product.Color,
+                Quality = product.Quality,
+                Material = product.Material,
+                Observation = product.Observation,
+                ImagePath = product.ImagePath,
+                PublishOn = product.PublishOn,
+                IsAvailable = product.IsAvailable,
+                ArtisanId = product.ArtisanId,
+            };
         }
 
         // POST: Products/Edit/5
@@ -84,16 +149,27 @@ namespace Andinoart_app.Backend.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ProductID,SKU,ProductName,Description,SalePrice,Length,Width,Height,Weight,Color,Quality,Material,Observation,PublishOn,IsAvailable,ArtisanId")] Product product)
+        public async Task<ActionResult> Edit(ProductView view)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                var pic = view.ImagePath;
+                var folder = "~/Content/Products";
+
+                if (view.ImageFile != null)
+                {
+                    pic = FilesHelper.UploadPhoto(view.ImageFile, folder);
+                    pic = $"{folder}/{pic}";
+                }
+
+                var product = this.ToProduct(view, pic);
+                this.db.Entry(product).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.ArtisanId = new SelectList(db.Artisans, "ArtisanId", "DNI", product.ArtisanId);
-            return View(product);
+            //return View(product);
+            return View(view);
         }
 
         // GET: Products/Delete/5
@@ -103,7 +179,7 @@ namespace Andinoart_app.Backend.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = await db.Products.FindAsync(id);
+            var product = await db.Products.FindAsync(id);
             if (product == null)
             {
                 return HttpNotFound();
@@ -116,7 +192,7 @@ namespace Andinoart_app.Backend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Product product = await db.Products.FindAsync(id);
+            var product = await db.Products.FindAsync(id);
             db.Products.Remove(product);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
