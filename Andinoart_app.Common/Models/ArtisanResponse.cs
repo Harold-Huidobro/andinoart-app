@@ -1,4 +1,4 @@
-﻿namespace Andinoart_app.API.Models
+﻿namespace Andinoart_app.Common.Models
 {
     using System;
     using System.Collections.Generic;
