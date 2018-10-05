@@ -72,7 +72,7 @@ namespace Andinoart_app.Common.Models
                 {
                     return "noproduct";
                 }
-                return $"https://andinoartapi.azurewebsites.net/{this.ImagePath.Substring(1)}";
+                return $"https://andinoartbackend.azurewebsites.net/{this.ImagePath.Substring(1)}";
             }
         }
 
